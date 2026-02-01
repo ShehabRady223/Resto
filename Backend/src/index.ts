@@ -1,11 +1,18 @@
+import 'dotenv/config'
 import express from 'express'
+import { PORT } from './constants/env.js'
+import connectDB from './config/db.js'
 
 const app = express();
+//Middleware
+// app.get('/health', (req, res) => {
+//     res.send('typescript with express works good')
+// })
 
-app.get('/health',(req,res)=>{
-    res.send('typescript with express works good')
-})
-
-app.listen(3000,()=>{
-    console.log("server work good with typescript on port 3000");
+//Routes
+//Error Exapction
+//Running App
+app.listen(PORT, async () => {
+    console.log(`server work good with typescript on port ${PORT}`);
+    await connectDB()
 })
